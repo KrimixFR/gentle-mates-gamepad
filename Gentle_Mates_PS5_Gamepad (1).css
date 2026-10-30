@@ -1,0 +1,78 @@
+/*
+ * Gentle Mates x PS5 DualSense — Gamepad Viewer theme
+ * Base: PS5 White skin by justEhCupcake
+ *
+ * Usage:
+ * 1. Host this file somewhere with a public HTTPS URL.
+ * 2. In Gamepad Viewer, use that URL in the editcss parameter.
+ *
+ * The original PS5 skin is imported first; the rules below add a dark,
+ * white and purple Gentle Mates-inspired accent treatment.
+ */
+
+@import url("https://justehcupcake.github.io/PS5_Display_Pics/PS5_White.css");
+
+:root {
+  --gm-black: #08080b;
+  --gm-dark: #17151d;
+  --gm-white: #f7f5fb;
+  --gm-purple: #8b5cf6;
+  --gm-purple-light: #c4a7ff;
+}
+
+/* General controller silhouette and image treatments */
+#controller,
+.controller,
+[class*="controller"],
+[id*="controller"] {
+  filter: drop-shadow(0 0 5px rgba(139, 92, 246, .22));
+}
+
+/* Give interactive elements a restrained purple glow when active */
+button,
+[class*="button"],
+[id*="button"],
+[class*="trigger"],
+[class*="bumper"],
+[class*="stick"],
+[class*="dpad"],
+[class*="touchpad"] {
+  transition: filter .12s ease, opacity .12s ease;
+}
+
+/* Common Gamepad Viewer pressed-state class names */
+.pressed,
+.active,
+.button-pressed,
+[class*="pressed"] {
+  filter: brightness(1.18) drop-shadow(0 0 5px rgba(139, 92, 246, .9));
+}
+
+/* Touchpad / central panel accents */
+#touchpad,
+.touchpad,
+[class*="touchpad"] {
+  border-color: var(--gm-purple) !important;
+}
+
+/* Purple accent for SVG-based controller elements */
+svg [fill="#ffffff"],
+svg [fill="#fff"],
+svg [fill="white"] {
+  /* Keep white surfaces clean; glow supplies the team accent. */
+  filter: drop-shadow(0 0 1px rgba(196, 167, 255, .28));
+}
+
+/* If the overlay exposes text or status labels, keep them on-theme */
+body,
+label,
+span,
+small {
+  color: var(--gm-white);
+}
+
+/* Keep the overlay itself transparent for OBS */
+html,
+body {
+  background: transparent !important;
+}
